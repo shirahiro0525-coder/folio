@@ -2005,3 +2005,77 @@ button {
     font-size: 13px;
   }
 }
+/* ===== FOLIO スマホ用レポート調整 ===== */
+@media (max-width: 600px) {
+  /* BS：左右2列を維持 */
+  .balance-sheet-table {
+    width: 100%;
+    max-width: 100%;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    font-size: 11px;
+  }
+
+  .balance-sheet-side {
+    min-width: 0;
+    padding: 0 6px 8px;
+  }
+
+  .balance-sheet-side h4 {
+    margin-left: -6px;
+    margin-right: -6px;
+    padding: 8px 4px;
+    font-size: 12px;
+  }
+
+  .balance-sheet-row,
+  .balance-sheet-total,
+  .balance-sheet-grand-total {
+    font-size: 11px;
+  }
+
+  /* PL：スマホ幅に合わせる */
+  .income-statement-table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed;
+    font-size: 12px;
+  }
+
+  .income-statement-table th,
+  .income-statement-table td {
+    padding: 8px 5px;
+    overflow-wrap: anywhere;
+  }
+
+  /* 試算表：科目名が縦に潰れないようにする */
+  .trial-balance-table {
+    width: 100%;
+    max-width: 100%;
+    table-layout: auto;
+    font-size: 11px;
+  }
+
+  .trial-balance-table th,
+  .trial-balance-table td {
+    padding: 8px 4px;
+  }
+
+  .trial-balance-table th:first-child,
+  .trial-balance-table td:first-child {
+    min-width: 90px;
+    overflow-wrap: anywhere;
+  }
+
+  /* 総勘定元帳：列幅を確保 */
+  .general-ledger-table {
+    width: 100%;
+    min-width: 560px;
+    max-width: none;
+    font-size: 11px;
+  }
+
+  .general-ledger-table th,
+  .general-ledger-table td {
+    padding: 8px 5px;
+  }
+}

@@ -1,0 +1,855 @@
+:root {
+  --text: #6b6375;
+  --text-h: #08060d;
+  --bg: #fff;
+  --border: #e5e4e7;
+  --code-bg: #f4f3ec;
+  --accent: #aa3bff;
+  --accent-bg: rgba(170, 59, 255, 0.1);
+  --accent-border: rgba(170, 59, 255, 0.5);
+  --social-bg: rgba(244, 243, 236, 0.5);
+  --shadow:
+    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  font: 18px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--text);
+  background: var(--bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #16171d;
+    --border: #2e303a;
+    --code-bg: #1f2028;
+    --accent: #c084fc;
+    --accent-bg: rgba(192, 132, 252, 0.15);
+    --accent-border: rgba(192, 132, 252, 0.5);
+    --social-bg: rgba(47, 48, 58, 0.5);
+    --shadow:
+      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  }
+
+  #social .button-icon {
+    filter: invert(1) brightness(2);
+  }
+}
+
+#root {
+  width: 1126px;
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-family: var(--heading);
+  font-weight: 500;
+  color: var(--text-h);
+}
+
+h1 {
+  font-size: 56px;
+  letter-spacing: -1.68px;
+  margin: 32px 0;
+  @media (max-width: 1024px) {
+    font-size: 36px;
+    margin: 20px 0;
+  }
+}
+h2 {
+  font-size: 24px;
+  line-height: 118%;
+  letter-spacing: -0.24px;
+  margin: 0 0 8px;
+  @media (max-width: 1024px) {
+    font-size: 20px;
+  }
+}
+p {
+  margin: 0;
+}
+
+code,
+.counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: var(--text-h);
+}
+
+code {
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: var(--code-bg);
+}
+/* ===== FOLIO Accounts ===== */
+
+.settings-page-description {
+  margin: 0 auto 28px;
+  color: #8b93a1;
+  font-size: 14px;
+}
+
+.account-create-card {
+  width: min(760px, calc(100% - 40px));
+  margin: 24px auto 28px;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  text-align: left;
+}
+
+.settings-card-label {
+  margin-bottom: 6px;
+  color: #8b93a1;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.account-create-card h3 {
+  margin: 0 0 20px;
+  color: #111827;
+}
+
+.account-create-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.4fr;
+  gap: 14px;
+  align-items: end;
+}
+
+.account-create-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.account-create-form input,
+.account-create-form select,
+.account-edit-form input,
+.account-edit-form select {
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border: 1px solid #dfe3e8;
+  border-radius: 8px;
+  background: #fff;
+  color: #111827;
+  font: inherit;
+}
+
+.account-primary-button {
+  grid-column: 1 / -1;
+  min-height: 44px;
+  border: 0;
+  border-radius: 8px;
+  background: #17191c;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.account-list {
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+  text-align: left;
+}
+
+.account-tree-section-title {
+  margin: 28px 0 10px;
+  color: #8b93a1;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.account-tree-item {
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-bottom: 0;
+}
+
+.account-tree-section-title + .account-tree-item {
+  border-radius: 14px 14px 0 0;
+}
+
+.account-tree-item:last-child {
+  border-bottom: 1px solid #e5e7eb;
+  border-radius: 0 0 14px 14px;
+}
+
+.account-tree-child {
+  padding-left: 42px;
+  background: #fcfcfd;
+}
+
+.account-tree-info {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-width: 0;
+}
+
+.account-tree-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.account-tree-name {
+  display: block;
+  color: #111827;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.account-tree-child .account-tree-name::before {
+  content: "└";
+  margin-right: 10px;
+  color: #c4c9d1;
+}
+
+.account-tree-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 5px;
+  color: #9299a5;
+  font-size: 12px;
+}
+
+.account-tree-balance {
+  min-width: 110px;
+  color: #111827;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.account-real-balance-status {
+  color: #6b7280;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.account-tree-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.account-tree-actions button,
+.account-edit-form button {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid #dfe3e8;
+  border-radius: 7px;
+  background: #fff;
+  color: #374151;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.account-tree-actions button:hover,
+.account-edit-form button:hover {
+  background: #f7f8fa;
+}
+
+.account-tree-actions button:disabled {
+  color: #c5c9d0;
+  background: #f8f9fa;
+  cursor: not-allowed;
+}
+
+.account-edit-form {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr auto;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 14px;
+  background: #f7f8fa;
+  border-radius: 10px;
+}
+
+.settings-back-button {
+  margin: 30px auto 60px;
+  padding: 8px 14px;
+  border: 0;
+  background: transparent;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.settings-back-button:hover {
+  color: #111827;
+}
+
+@media (max-width: 700px) {
+  .account-create-card,
+  .account-list {
+    width: calc(100% - 24px);
+  }
+
+  .account-create-form {
+    grid-template-columns: 1fr;
+  }
+
+  .account-primary-button {
+    grid-column: auto;
+  }
+
+  .account-tree-info {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .account-tree-balance {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .account-tree-actions {
+    justify-content: flex-start;
+  }
+
+  .account-edit-form {
+    grid-template-columns: 1fr;
+  }
+
+  .account-tree-child {
+    padding-left: 28px;
+  }
+}
+
+.account-tree-actions button {
+  width: auto;
+  min-width: 88px;
+  min-height: 36px;
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.account-tree-child {
+  padding-left: 38px;
+}
+
+.account-edit-form {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .account-create-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .account-create-form label:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .account-primary-button {
+    grid-column: 1 / -1;
+  }
+
+  .account-tree-info {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .account-tree-main {
+    min-width: 0;
+  }
+
+  .account-tree-balance,
+  .account-real-balance-status {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .account-tree-actions {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 520px) {
+  .account-create-form {
+    grid-template-columns: 1fr;
+  }
+
+  .account-create-form label:first-child,
+  .account-primary-button {
+    grid-column: auto;
+  }
+
+  .account-tree-actions button {
+    flex: 1 1 calc(50% - 8px);
+  }
+}
+/* 勘定科目：行レイアウト最終調整 */
+.account-tree-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 120px 300px;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 24px;
+  box-sizing: border-box;
+}
+
+.account-tree-info {
+  min-width: 0;
+  text-align: left;
+}
+
+.account-tree-main {
+  display: block;
+  min-width: 0;
+}
+
+.account-tree-name {
+  display: block;
+  font-weight: 600;
+  color: var(--text-h);
+  white-space: normal;
+  word-break: keep-all;
+}
+
+.account-tree-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.account-tree-balance {
+  justify-self: end;
+  font-weight: 700;
+  color: var(--text-h);
+  white-space: nowrap;
+}
+
+.account-tree-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+}
+
+.account-tree-actions button {
+  width: auto;
+  min-width: 76px;
+  white-space: nowrap;
+}
+/* 勘定科目：情報・残高・操作を安定して配置 */
+.account-tree-item {
+  grid-template-columns: minmax(180px, 1fr) 140px minmax(260px, auto);
+}
+
+.account-tree-info {
+  grid-column: 1;
+}
+
+.account-tree-balance {
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  align-self: center;
+}
+
+.account-tree-actions {
+  grid-column: 3;
+  grid-row: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.account-tree-edit-form {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) 160px 180px auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.account-tree-edit-form input,
+.account-tree-edit-form select {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+@media (max-width: 800px) {
+  .account-tree-item {
+    grid-template-columns: 1fr;
+  }
+
+  .account-tree-info,
+  .account-tree-balance,
+  .account-tree-actions,
+  .account-tree-edit-form {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .account-tree-balance {
+    justify-self: start;
+  }
+
+  .account-tree-actions {
+    justify-content: flex-start;
+  }
+
+  .account-tree-edit-form {
+    grid-template-columns: 1fr;
+  }
+}
+/* 勘定科目：新規追加フォーム調整 */
+.account-create-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) 130px 160px 140px;
+  gap: 12px;
+  align-items: end;
+  text-align: left;
+}
+
+.account-create-form input,
+.account-create-form select,
+.account-create-form button {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.account-create-form button {
+  white-space: nowrap;
+}
+
+@media (max-width: 800px) {
+  .account-create-form {
+    grid-template-columns: 1fr;
+  }
+}
+/* 勘定科目：新規追加フォームのレイアウト修正 */
+.account-create-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 2fr) minmax(120px, 1fr) minmax(160px, 1.4fr) 160px;
+  gap: 12px;
+  align-items: end;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.account-create-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  min-width: 0;
+  text-align: left;
+}
+
+.account-create-form input,
+.account-create-form select {
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.account-create-form .account-primary-button {
+  width: 160px;
+  height: 42px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .account-create-form {
+    grid-template-columns: 1fr;
+  }
+
+  .account-create-form .account-primary-button {
+    width: 100%;
+  }
+}
+.account-create-form .account-primary-button {
+  width: 160px;
+  height: 42px;
+  box-sizing: border-box;
+  white-space: nowrap;
+  margin: 0;
+
+  background: #17181b;
+  color: #ffffff;
+  border: 1px solid #17181b;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+/* 勘定科目一覧：行レイアウト最終調整 */
+.account-tree-item {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) 130px minmax(180px, auto);
+  align-items: center;
+  gap: 24px;
+  padding: 24px 20px;
+  box-sizing: border-box;
+}
+
+.account-tree-info {
+  min-width: 0;
+  text-align: left;
+}
+
+.account-tree-name {
+  display: block;
+  font-weight: 600;
+  color: var(--text-h);
+  margin-bottom: 6px;
+}
+
+.account-tree-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.account-real-balance-status {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.account-tree-balance {
+  display: block;
+  text-align: right;
+  font-weight: 700;
+  color: var(--text-h);
+  white-space: nowrap;
+}
+
+.account-tree-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(90px, 1fr));
+  gap: 8px;
+  min-width: 190px;
+}
+
+.account-tree-actions button {
+  width: 100%;
+  min-height: 36px;
+  white-space: nowrap;
+}
+
+.account-tree-child {
+  padding-left: 42px;
+}
+
+@media (max-width: 760px) {
+  .account-tree-item {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .account-tree-balance {
+    text-align: left;
+  }
+
+  .account-tree-actions {
+    width: 100%;
+  }
+
+  .account-tree-child {
+    padding-left: 30px;
+  }
+}
+/* 勘定科目一覧：操作エリアの重なりを解消 */
+.account-tree-item {
+  grid-template-columns: minmax(190px, 1fr) 120px minmax(300px, auto);
+  column-gap: 20px;
+}
+
+.account-tree-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 300px;
+}
+
+.account-tree-actions button {
+  width: auto;
+  min-width: 82px;
+  min-height: 36px;
+  padding: 0 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.account-tree-actions button:first-child {
+  min-width: 118px;
+}
+
+.account-real-balance-status {
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .account-tree-item {
+    grid-template-columns: 1fr;
+  }
+
+  .account-tree-actions {
+    min-width: 0;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+}
+/* ===== 勘定科目：PC表示 ===== */
+@media (min-width: 761px) {
+  .account-tree-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  /* 1段目：勘定科目情報 */
+  .account-tree-info {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .account-tree-main {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .account-tree-name {
+    display: block;
+    width: 100%;
+    white-space: normal;
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .account-tree-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+  }
+
+  .account-tree-values {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    white-space: nowrap;
+  }
+
+  .account-tree-balance,
+  .account-real-balance-status {
+    min-width: 0;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* 編集時の入力欄 */
+  .account-edit-form {
+    width: 100%;
+  }
+
+  /* 2段目：操作ボタン */
+  .account-tree-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 0;
+    flex-wrap: wrap;
+  }
+
+  .account-tree-actions button {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 82px;
+    white-space: nowrap;
+  }
+
+  .account-tree-actions button:first-child {
+    min-width: 118px;
+  }
+}
+/* レポート：勘定科目選択欄 */
+.report-page select {
+  min-width: 180px;
+  padding: 10px 14px;
+  border: 1px solid #e1e5eb;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #172033;
+  font-size: 13px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.report-page select:focus {
+  outline: none;
+  border-color: #64748b;
+}

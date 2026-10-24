@@ -1542,7 +1542,7 @@ setShowJournalForm(false)
 </div>
   </section>
 )}
-{activeNav === 'journal' && selectedJournal !== null && (
+{activeNav === 'journal' && selectedJournal !== null && !isEditingJournal && (
   <section className="journal-form-page">
     <div className="journal-form-header">
       <div>
@@ -1632,7 +1632,11 @@ setShowJournalForm(false)
 
       <button
         type="button"
-        onClick={() => setShowJournalForm(false)}
+        onClick={() => {
+  setShowJournalForm(false)
+  setIsEditingJournal(false)
+  setSelectedJournalId(null)
+}}
       >
         ← 仕訳一覧へ
       </button>
@@ -2064,7 +2068,7 @@ setShowJournalForm(false)
     )
   })}
 </div>
-    <table className="statement-table">
+    <table className="trend-table">
       <thead>
         <tr>
           <th>月</th>
@@ -2117,7 +2121,8 @@ setShowJournalForm(false)
   <>
     <p className="ledger-account-name">{ledgerAccount.name}</p>
 
-    <table className="general-ledger-table">
+    <div className="general-ledger-scroll">
+  <table className="general-ledger-table">
       <thead>
         <tr>
           <th>No.</th>
@@ -2194,8 +2199,9 @@ setShowJournalForm(false)
           ).toLocaleString()}`}
   </td>
 </tr>
-      </tbody>
-    </table>
+       </tbody>
+  </table>
+</div>
   </>
 )}
   </section>

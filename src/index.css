@@ -853,3 +853,62 @@ code {
   outline: none;
   border-color: #64748b;
 }
+/* ===== 勘定科目ページ：スマホ表示の調整 ===== */
+@media (max-width: 600px) {
+  .account-create-card,
+  .account-list,
+  .account-tree-item {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .account-create-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .account-create-form label {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .account-create-form input,
+  .account-create-form select,
+  .account-create-form .account-primary-button {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .account-create-form .account-primary-button {
+    height: auto;
+    min-height: 44px;
+    white-space: normal;
+  }
+
+  .account-tree-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .account-tree-actions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 0;
+    justify-content: flex-start;
+  }
+
+  .account-tree-child {
+    margin-left: 0;
+    padding-left: 12px;
+  }
+}
